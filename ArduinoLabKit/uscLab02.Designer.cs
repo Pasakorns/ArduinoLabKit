@@ -1,6 +1,6 @@
 ﻿namespace ArduinoLabKit
 {
-    partial class uscLab01
+    partial class uscLab02
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,28 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Lab 01";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(229, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Lab 02";
             // 
-            // uscLab01
+            // uscLab02
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Controls.Add(this.textBox1);
-            this.MinimumSize = new System.Drawing.Size(280, 300);
-            this.Name = "uscLab01";
-            this.Size = new System.Drawing.Size(0, 0);
-            this.Load += new System.EventHandler(this.uscLab01_Load);
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Controls.Add(this.label1);
+            this.Name = "uscLab02";
+            this.Size = new System.Drawing.Size(327, 391);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,6 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

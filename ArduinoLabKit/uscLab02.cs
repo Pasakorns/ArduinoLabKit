@@ -10,29 +10,24 @@ using System.Windows.Forms;
 
 namespace ArduinoLabKit
 {
-    public partial class uscLab01 : UserControl
+    public partial class uscLab02 : UserControl
     {
-        private static uscLab01 _instance;
-        public static uscLab01 Instance
+        private static uscLab02 _instance;
+        public static uscLab02 Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new uscLab01();
+                    _instance = new uscLab02();
                 }
                 return _instance;
             }
         }
 
-        public uscLab01()
+        public uscLab02()
         {
             InitializeComponent();
-        }
-
-        private void uscLab01_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

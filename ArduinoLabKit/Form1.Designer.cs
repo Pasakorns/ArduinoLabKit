@@ -114,13 +114,11 @@
             // 
             // cboLabSelect
             // 
-            this.cboLabSelect.Items.AddRange(new object[] {
-            "01_LED control",
-            "02_Motor control",
-            "03_7 segments"});
             this.cboLabSelect.Margin = new System.Windows.Forms.Padding(60, 0, 1, 0);
             this.cboLabSelect.Name = "cboLabSelect";
             this.cboLabSelect.Size = new System.Drawing.Size(121, 36);
+            this.cboLabSelect.Sorted = true;
+            this.cboLabSelect.TextChanged += new System.EventHandler(this.cboLabSelect_TextChanged);
             // 
             // cboCommuSelect
             // 
@@ -130,6 +128,7 @@
             this.cboCommuSelect.Margin = new System.Windows.Forms.Padding(80, 0, 1, 0);
             this.cboCommuSelect.Name = "cboCommuSelect";
             this.cboCommuSelect.Size = new System.Drawing.Size(121, 36);
+            this.cboCommuSelect.TextChanged += new System.EventHandler(this.cboCommuSelect_TextChanged);
             // 
             // contentsToolStripMenuItem
             // 
@@ -326,6 +325,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Arduino Lab Kit";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabMain.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

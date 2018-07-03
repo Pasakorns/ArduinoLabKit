@@ -3,51 +3,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ArduinoLabKit
 {
-    public abstract class PanelContainer
+    public class PanelContainer
     {
-        private object _container ;
-    }
+        private TabPage _tab;
 
-    public abstract class PanelSource
-    {
-        private object _source;
-    }
+        public PanelContainer(){ }
 
-    public interface IAddSource 
-    {
-        void Add(PanelSource source, PanelContainer container);
-    }
-
-    public interface IDataManagemnet
-    {
-        void SetData(object data);
-        void GetData(object data);
-    }
-
-    class ControlPanel : IAddSource, IDataManagemnet
-    {
-        private object _container;
-        private object _source;
-
-        public object Container { get => _container; set => _container = value; }
-        public object Source { get => _source; set => _source = value; }
-
-        public void Add(PanelSource source, PanelContainer container)
+        public PanelContainer(TabPage tabControl)
         {
-            throw new NotImplementedException();
+            this._tab = tabControl;
         }
 
-        public void GetData(object data)
+        public TabPage Tab
         {
-            throw new NotImplementedException();
-        }
+            get
+            {
+                if (_tab == null)
+                {
+                    _tab = new TabPage();
+                }
+                return _tab;
+            }
 
-        public void SetData(object data)
-        {
-            throw new NotImplementedException();
+            set => _tab = value;
         }
     }
+
+    public class PanelSource
+    {
+        private Control _control;
+
+        public PanelSource(){}
+
+        public PanelSource(Control userControl)
+        {
+            this._control = userControl;
+        }
+
+        public Control Control
+        {
+            get
+            {
+                if (_control == null)
+                {
+                    _control = new Control();
+                }
+                return _control;
+            }
+
+            set => _control = value;
+        }
+    }
+
+    public class PanelIndexing
+    {
+        private Dictionary<string, Control> _pIndex = new Dictionary<string, Control>();
+
+        public Dictionary<string, Control> PIndex { get => _pIndex; set => _pIndex = value; }
+
+        public void AddPanel(string name, Control control)
+        {
+            _pIndex.Add(name, control);
+        }
+    }
+
+    public class PanelManagement
+    {
+        private PanelContainer _container;
+        private PanelSource _source;
+
+        public PanelManagement(PanelContainer container, PanelSource control)
+        {
+            this._container = container;
+            this._source = control;
+        }
+
+        public void ShowPanel()
+        {
+            _container.Tab.Controls.Clear();
+            _container.Tab.Controls.Add(_source.Control);
+        }
+    }
+
+
 }
