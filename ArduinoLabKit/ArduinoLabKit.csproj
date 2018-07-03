@@ -77,6 +77,18 @@
     <Compile Include="uscLab03.Designer.cs">
       <DependentUpon>uscLab03.cs</DependentUpon>
     </Compile>
+    <Compile Include="uscSerialConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uscSerialConfig.Designer.cs">
+      <DependentUpon>uscSerialConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uscTcpConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uscTcpConfig.Designer.cs">
+      <DependentUpon>uscTcpConfig.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="uscLab03.resx">
       <DependentUpon>uscLab03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uscTcpConfig.resx">
+      <DependentUpon>uscTcpConfig.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
