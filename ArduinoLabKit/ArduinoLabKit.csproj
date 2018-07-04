@@ -111,6 +111,9 @@
     <EmbeddedResource Include="uscLab03.resx">
       <DependentUpon>uscLab03.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uscSerialConfig.resx">
+      <DependentUpon>uscSerialConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uscTcpConfig.resx">
       <DependentUpon>uscTcpConfig.cs</DependentUpon>
     </EmbeddedResource>

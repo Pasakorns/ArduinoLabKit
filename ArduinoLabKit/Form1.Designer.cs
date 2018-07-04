@@ -116,7 +116,7 @@
             // 
             this.cboLabSelect.Margin = new System.Windows.Forms.Padding(60, 0, 1, 0);
             this.cboLabSelect.Name = "cboLabSelect";
-            this.cboLabSelect.Size = new System.Drawing.Size(121, 36);
+            this.cboLabSelect.Size = new System.Drawing.Size(200, 36);
             this.cboLabSelect.Sorted = true;
             this.cboLabSelect.TextChanged += new System.EventHandler(this.cboLabSelect_TextChanged);
             // 
@@ -125,9 +125,9 @@
             this.cboCommuSelect.Items.AddRange(new object[] {
             "Serial",
             "TCP"});
-            this.cboCommuSelect.Margin = new System.Windows.Forms.Padding(80, 0, 1, 0);
+            this.cboCommuSelect.Margin = new System.Windows.Forms.Padding(60, 0, 1, 0);
             this.cboCommuSelect.Name = "cboCommuSelect";
-            this.cboCommuSelect.Size = new System.Drawing.Size(121, 36);
+            this.cboCommuSelect.Size = new System.Drawing.Size(80, 36);
             this.cboCommuSelect.TextChanged += new System.EventHandler(this.cboCommuSelect_TextChanged);
             // 
             // contentsToolStripMenuItem
@@ -322,6 +322,7 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Arduino Lab Kit";
