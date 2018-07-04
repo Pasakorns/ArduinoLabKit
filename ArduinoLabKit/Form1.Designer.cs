@@ -122,9 +122,6 @@
             // 
             // cboCommuSelect
             // 
-            this.cboCommuSelect.Items.AddRange(new object[] {
-            "Serial",
-            "TCP"});
             this.cboCommuSelect.Margin = new System.Windows.Forms.Padding(60, 0, 1, 0);
             this.cboCommuSelect.Name = "cboCommuSelect";
             this.cboCommuSelect.Size = new System.Drawing.Size(80, 36);

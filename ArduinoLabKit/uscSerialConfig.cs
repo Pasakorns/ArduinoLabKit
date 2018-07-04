@@ -12,6 +12,19 @@ namespace ArduinoLabKit
 {
     public partial class uscSerialConfig : UserControl
     {
+        private static uscSerialConfig _instance;
+        public static uscSerialConfig Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new uscSerialConfig();
+                }
+                return _instance;
+            }
+        }
+
         public uscSerialConfig()
         {
             InitializeComponent();

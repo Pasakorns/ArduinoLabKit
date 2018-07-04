@@ -48,9 +48,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.label1);
-            this.MinimumSize = new System.Drawing.Size(280, 300);
             this.Name = "uscLab01";
-            this.Size = new System.Drawing.Size(280, 300);
+            this.Size = new System.Drawing.Size(340, 330);
             this.Load += new System.EventHandler(this.uscLab01_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

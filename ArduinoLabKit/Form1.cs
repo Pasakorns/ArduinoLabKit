@@ -16,6 +16,7 @@ namespace ArduinoLabKit
 
         PanelIndexing LabList;
         PanelManager panelMenager = new MyPanelMenager();
+        private PanelIndexing CommuList;
 
         public Form1()
         {
@@ -36,19 +37,37 @@ namespace ArduinoLabKit
             {
                 cboLabSelect.Items.Add(item.Key.ToString());
             }
+
+            //TODO: Add UserControl to Index when add new communication method
+            //Indexing all communication config panels
+            CommuList = new PanelIndexing();
+            CommuList.AddPanel("Serial Com.", uscSerialConfig.Instance);
+            CommuList.AddPanel("TCP/IP", uscTcpConfig.Instance);
+
+            //Show selection list in combo box
+            foreach (var item in CommuList.PIndex)
+            {
+                cboCommuSelect.Items.Add(item.Key.ToString());
+            }
+
         }
 
         private void cboLabSelect_TextChanged(object sender, EventArgs e)
         {
-            //TODO: Edit when change container
+            //TODO: Edit when change Lab container
             //HACK: review 
             panelMenager.ClearContainer(new TabContainer(tabControl));
             panelMenager.AddSouce(new AddUscToTab(tabControl, LabList.PIndex[cboLabSelect.Text.Trim().ToString()]));
+            tabMain.SelectTab(tabControl);
         }
 
         private void cboCommuSelect_TextChanged(object sender, EventArgs e)
         {
-
+            //TODO: Edit when change Communication cofig container
+            //HACK: review 
+            panelMenager.ClearContainer(new TabContainer(tabCommu));
+            panelMenager.AddSouce(new AddUscToTab(tabCommu, CommuList.PIndex[cboCommuSelect.Text.Trim().ToString()]));
+            tabMain.SelectTab(tabCommu);
         }
     }
 }

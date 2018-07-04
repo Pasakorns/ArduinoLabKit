@@ -29,5 +29,10 @@ namespace ArduinoLabKit
         {
             InitializeComponent();
         }
+
+        private void uscLab03_Load(object sender, EventArgs e)
+        {
+            //this.Dock = DockStyle.Fill;
+        }
     }
 }

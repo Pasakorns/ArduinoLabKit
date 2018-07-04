@@ -32,7 +32,7 @@ namespace ArduinoLabKit
 
         private void uscLab01_Load(object sender, EventArgs e)
         {
-
+            //this.Dock = DockStyle.Fill;
         }
     }
 }

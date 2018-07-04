@@ -49,6 +49,7 @@
             this.Controls.Add(this.label1);
             this.Name = "uscLab03";
             this.Size = new System.Drawing.Size(290, 365);
+            this.Load += new System.EventHandler(this.uscLab03_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
