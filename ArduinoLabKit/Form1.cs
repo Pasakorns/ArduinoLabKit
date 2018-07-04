@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArduinoLabKit.MyClass01;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +15,7 @@ namespace ArduinoLabKit
     {
 
         PanelIndexing LabList;
-        PanelManagement panel;
-        PanelContainer tab;
-        PanelSource labPanel;
+        PanelManager panelMenager = new MyPanelMenager();
 
         public Form1()
         {
@@ -25,32 +24,26 @@ namespace ArduinoLabKit
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            /// Indexing all Lab control panels
+            //TODO: Add UserControl to Index when add new Arduino lab
+            //Indexing all Lab control panels
             LabList = new PanelIndexing();
             LabList.AddPanel("Lab 01 : LED control", uscLab01.Instance);
             LabList.AddPanel("Lab 02 : Analog R/W", uscLab02.Instance);
             LabList.AddPanel("Lab 03 : Step motor control", uscLab03.Instance);
 
-            // Show selection list in combo box
+            //Show selection list in combo box
             foreach (var item in LabList.PIndex)
             {
                 cboLabSelect.Items.Add(item.Key.ToString());
             }
-
-            /// Initialize tab
-            tab = new PanelContainer();
-            labPanel = new PanelSource();
-            tab.Tab = tabControl;
-         
         }
 
         private void cboLabSelect_TextChanged(object sender, EventArgs e)
         {
-            /// show Select Lab on tab
-            labPanel.Control = LabList.PIndex[cboLabSelect.Text.Trim()];
-            panel = new PanelManagement(tab, labPanel);
-            panel.ShowPanel();
+            //TODO: Edit when change container
+            //HACK: review 
+            panelMenager.ClearContainer(new TabContainer(tabControl));
+            panelMenager.AddSouce(new AddUscToTab(tabControl, LabList.PIndex[cboLabSelect.Text.Trim().ToString()]));
         }
 
         private void cboCommuSelect_TextChanged(object sender, EventArgs e)

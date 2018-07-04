@@ -7,87 +7,38 @@ using System.Windows.Forms;
 
 namespace ArduinoLabKit
 {
-    public class PanelContainer
+    public abstract class PanelElement
     {
-        private TabPage _tab;
-
-        public PanelContainer(){ }
-
-        public PanelContainer(TabPage tabControl)
-        {
-            this._tab = tabControl;
-        }
-
-        public TabPage Tab
-        {
-            get
-            {
-                if (_tab == null)
-                {
-                    _tab = new TabPage();
-                }
-                return _tab;
-            }
-
-            set => _tab = value;
-        }
+        public abstract Control Element();
     }
 
-    public class PanelSource
+    public interface IPanel
     {
-        private Control _control;
-
-        public PanelSource(){}
-
-        public PanelSource(Control userControl)
-        {
-            this._control = userControl;
-        }
-
-        public Control Control
-        {
-            get
-            {
-                if (_control == null)
-                {
-                    _control = new Control();
-                }
-                return _control;
-            }
-
-            set => _control = value;
-        }
+        void AddControl();
     }
 
+    public interface IContainer
+    {
+        void ClearContainer();
+    }
+
+    public abstract class PanelManager
+    {
+        public abstract void AddSouce(IPanel panel);
+        public abstract void ClearContainer(IContainer container);
+    }
+
+    // ------------------------------------------------------------------------- //
     public class PanelIndexing
     {
-        private Dictionary<string, Control> _pIndex = new Dictionary<string, Control>();
+        private Dictionary<string, UserControl> _pIndex = new Dictionary<string, UserControl>();
 
-        public Dictionary<string, Control> PIndex { get => _pIndex; set => _pIndex = value; }
+        public Dictionary<string, UserControl> PIndex { get => _pIndex; set => _pIndex = value; }
 
-        public void AddPanel(string name, Control control)
+        public void AddPanel(string name, UserControl control)
         {
             _pIndex.Add(name, control);
         }
     }
-
-    public class PanelManagement
-    {
-        private PanelContainer _container;
-        private PanelSource _source;
-
-        public PanelManagement(PanelContainer container, PanelSource control)
-        {
-            this._container = container;
-            this._source = control;
-        }
-
-        public void ShowPanel()
-        {
-            _container.Tab.Controls.Clear();
-            _container.Tab.Controls.Add(_source.Control);
-        }
-    }
-
-
+    // ------------------------------------------------------------------------- //
 }
