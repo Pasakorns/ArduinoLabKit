@@ -24,6 +24,10 @@ namespace ArduinoLabKit
                 return _instance;
             }
         }
+        private int _red;
+        private int _grn;
+        private int _blu;
+        private int _pow;
 
         public uscLab01()
         {
@@ -33,6 +37,41 @@ namespace ArduinoLabKit
         private void uscLab01_Load(object sender, EventArgs e)
         {
             //this.Dock = DockStyle.Fill;
+        }
+
+        private void pnlColor_Click(object sender, EventArgs e)
+        {
+            DialogResult result = colorDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                pnlColor.BackColor = colorDialog1.Color;
+                _red = colorDialog1.Color.R;
+                _grn = colorDialog1.Color.G;
+                _blu = colorDialog1.Color.B;
+
+                trbRed.Value = _red;
+                trbGreen.Value = _grn;
+                trbBlue.Value = _blu;
+
+                txtRed.Text = _red.ToString();
+                txtGreen.Text = _grn.ToString();
+                txtBlue.Text = _blu.ToString();
+            }
+        }
+
+        private void trbRGB_Scroll(object sender, EventArgs e)
+        {
+            _red = trbRed.Value;
+            _grn = trbGreen.Value;
+            _blu = trbBlue.Value;
+            _pow = trbPower.Value;
+
+            txtRed.Text = _red.ToString();
+            txtGreen.Text = _grn.ToString();
+            txtBlue.Text = _blu.ToString();
+            txtPower.Text = _pow.ToString();
+
+            pnlColor.BackColor = Color.FromArgb(_red, _grn, _blu);
         }
     }
 }
