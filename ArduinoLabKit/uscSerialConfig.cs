@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace ArduinoLabKit
 {
@@ -28,6 +29,18 @@ namespace ArduinoLabKit
         public uscSerialConfig()
         {
             InitializeComponent();
+        }
+
+        private void uscSerialConfig_Load(object sender, EventArgs e)
+        {
+            cboBaudRate.SelectedIndex = 0;
+            cboDataSize.SelectedIndex = 1;
+            cboHandshake.SelectedIndex = 0;
+            cboParity.SelectedIndex = 0;
+
+            cboPortName.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            cboPortName.Items.AddRange(ports);
         }
     }
 }

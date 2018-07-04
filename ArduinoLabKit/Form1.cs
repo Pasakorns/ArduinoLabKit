@@ -32,7 +32,7 @@ namespace ArduinoLabKit
             LabList.AddPanel("Lab 02 : Analog R/W", uscLab02.Instance);
             LabList.AddPanel("Lab 03 : Step motor control", uscLab03.Instance);
 
-            //Show selection list in combo box
+            //add selection list in combo box
             foreach (var item in LabList.PIndex)
             {
                 cboLabSelect.Items.Add(item.Key.ToString());
@@ -49,6 +49,9 @@ namespace ArduinoLabKit
             {
                 cboCommuSelect.Items.Add(item.Key.ToString());
             }
+
+            cboCommuSelect.SelectedIndex = 0;
+            cboLabSelect.SelectedIndex = 0;
 
         }
 

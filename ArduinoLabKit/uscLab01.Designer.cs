@@ -57,7 +57,7 @@
             // 
             this.lblLab01.AutoSize = true;
             this.lblLab01.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLab01.Location = new System.Drawing.Point(112, 9);
+            this.lblLab01.Location = new System.Drawing.Point(103, 9);
             this.lblLab01.Name = "lblLab01";
             this.lblLab01.Size = new System.Drawing.Size(95, 17);
             this.lblLab01.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             this.pnlColor.BackColor = System.Drawing.Color.White;
             this.pnlColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlColor.Location = new System.Drawing.Point(121, 34);
+            this.pnlColor.Location = new System.Drawing.Point(114, 34);
             this.pnlColor.Name = "pnlColor";
             this.pnlColor.Size = new System.Drawing.Size(71, 70);
             this.pnlColor.TabIndex = 1;
@@ -119,7 +119,7 @@
             this.groupBox1.Controls.Add(this.trbRed);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtRed);
-            this.groupBox1.Location = new System.Drawing.Point(13, 110);
+            this.groupBox1.Location = new System.Drawing.Point(11, 110);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 200);
             this.groupBox1.TabIndex = 4;
@@ -234,7 +234,7 @@
             this.groupBox2.Controls.Add(this.trbPower);
             this.groupBox2.Controls.Add(this.txtPower);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(218, 110);
+            this.groupBox2.Location = new System.Drawing.Point(216, 110);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(74, 200);
             this.groupBox2.TabIndex = 13;
@@ -252,7 +252,7 @@
             this.Controls.Add(this.pnlColor);
             this.Controls.Add(this.lblLab01);
             this.Name = "uscLab01";
-            this.Size = new System.Drawing.Size(306, 329);
+            this.Size = new System.Drawing.Size(300, 330);
             this.Load += new System.EventHandler(this.uscLab01_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trbRed)).EndInit();
             this.groupBox1.ResumeLayout(false);

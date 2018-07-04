@@ -24,10 +24,16 @@ namespace ArduinoLabKit
                 return _instance;
             }
         }
+
         private int _red;
         private int _grn;
         private int _blu;
         private int _pow;
+
+        public int Red { get => _red; }
+        public int Grn { get => _grn; }
+        public int Blu { get => _blu; }
+        public int Pow { get => _pow; }
 
         public uscLab01()
         {
@@ -37,6 +43,7 @@ namespace ArduinoLabKit
         private void uscLab01_Load(object sender, EventArgs e)
         {
             //this.Dock = DockStyle.Fill;
+             
         }
 
         private void pnlColor_Click(object sender, EventArgs e)
