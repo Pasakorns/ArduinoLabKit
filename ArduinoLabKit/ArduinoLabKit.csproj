@@ -57,7 +57,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyClass01\CommunicationManager.cs" />
+    <Compile Include="MyClass01\LabData.cs" />
     <Compile Include="MyClass01\LabPanel.cs" />
+    <Compile Include="MyClass01\SerialCommunication.cs" />
+    <Compile Include="MyClass01\TcpCommunication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="uscLab01.cs">
@@ -133,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\circuit-icon-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\code-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

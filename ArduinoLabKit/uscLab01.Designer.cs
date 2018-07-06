@@ -45,6 +45,8 @@
             this.txtPower = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnColorUpload = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trbRed)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbBlue)).BeginInit();
@@ -67,9 +69,9 @@
             // 
             this.pnlColor.BackColor = System.Drawing.Color.White;
             this.pnlColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlColor.Location = new System.Drawing.Point(114, 34);
+            this.pnlColor.Location = new System.Drawing.Point(50, 37);
             this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(71, 70);
+            this.pnlColor.Size = new System.Drawing.Size(82, 61);
             this.pnlColor.TabIndex = 1;
             this.pnlColor.Click += new System.EventHandler(this.pnlColor_Click);
             // 
@@ -205,6 +207,7 @@
             this.trbPower.SmallChange = 10;
             this.trbPower.TabIndex = 10;
             this.trbPower.TickFrequency = 64;
+            this.trbPower.Value = 255;
             this.trbPower.Scroll += new System.EventHandler(this.trbRGB_Scroll);
             // 
             // label4
@@ -240,6 +243,27 @@
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             // 
+            // btnColorUpload
+            // 
+            this.btnColorUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColorUpload.Location = new System.Drawing.Point(184, 47);
+            this.btnColorUpload.Name = "btnColorUpload";
+            this.btnColorUpload.Size = new System.Drawing.Size(75, 45);
+            this.btnColorUpload.TabIndex = 14;
+            this.btnColorUpload.Text = "Upload Color";
+            this.btnColorUpload.UseVisualStyleBackColor = true;
+            this.btnColorUpload.Click += new System.EventHandler(this.btnColorUpload_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(138, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 22);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "==>";
+            // 
             // uscLab01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +271,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnColorUpload);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlColor);
@@ -286,5 +312,7 @@
         private System.Windows.Forms.TextBox txtPower;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button btnColorUpload;
+        private System.Windows.Forms.Label label5;
     }
 }

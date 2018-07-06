@@ -43,18 +43,16 @@ namespace ArduinoLabKit.MyClass01
         }
     }
 
-    public class MyPanelMenager : PanelManager
+    public class PanelMenager
     {
-        public override void AddSouce(IPanel panel)
+        public void AddSouce(IPanel panel)
         {
             panel.AddControl();
-            //throw new NotImplementedException();
         }
 
-        public override void ClearContainer(IContainer container)
+        public void ClearContainer(IContainer container)
         {
             container.ClearContainer();
-            //throw new NotImplementedException();
         }
     }
 }

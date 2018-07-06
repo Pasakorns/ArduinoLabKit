@@ -36,13 +36,14 @@
             this.cboBaudRate = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboDataSize = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboParity = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboHandshake = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboParity = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboDataSize = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.btnConnect.TabIndex = 0;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnDisconnect
             // 
@@ -64,6 +66,7 @@
             this.btnDisconnect.TabIndex = 1;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // lblPortName
             // 
@@ -128,15 +131,39 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Serial configuration";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Handshake :";
+            // 
+            // cboHandshake
+            // 
+            this.cboHandshake.FormattingEnabled = true;
+            this.cboHandshake.Location = new System.Drawing.Point(95, 93);
+            this.cboHandshake.Name = "cboHandshake";
+            this.cboHandshake.Size = new System.Drawing.Size(106, 21);
+            this.cboHandshake.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Parity :";
+            // 
+            // cboParity
+            // 
+            this.cboParity.FormattingEnabled = true;
+            this.cboParity.Location = new System.Drawing.Point(95, 56);
+            this.cboParity.Name = "cboParity";
+            this.cboParity.Size = new System.Drawing.Size(106, 21);
+            this.cboParity.TabIndex = 9;
             // 
             // label2
             // 
@@ -158,46 +185,25 @@
             this.cboDataSize.Size = new System.Drawing.Size(106, 21);
             this.cboDataSize.TabIndex = 7;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Parity :";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Serial configuration";
             // 
-            // cboParity
+            // lblStatus
             // 
-            this.cboParity.FormattingEnabled = true;
-            this.cboParity.Items.AddRange(new object[] {
-            "none",
-            "even",
-            "odd"});
-            this.cboParity.Location = new System.Drawing.Point(95, 56);
-            this.cboParity.Name = "cboParity";
-            this.cboParity.Size = new System.Drawing.Size(106, 21);
-            this.cboParity.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Handshake :";
-            // 
-            // cboHandshake
-            // 
-            this.cboHandshake.FormattingEnabled = true;
-            this.cboHandshake.Items.AddRange(new object[] {
-            "OFF",
-            "ON"});
-            this.cboHandshake.Location = new System.Drawing.Point(95, 93);
-            this.cboHandshake.Name = "cboHandshake";
-            this.cboHandshake.Size = new System.Drawing.Size(106, 21);
-            this.cboHandshake.TabIndex = 11;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(2, 314);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(97, 13);
+            this.lblStatus.TabIndex = 9;
+            this.lblStatus.Text = "Status : connected";
+            this.lblStatus.Visible = false;
             // 
             // uscSerialConfig
             // 
@@ -206,6 +212,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -240,5 +247,6 @@
         private System.Windows.Forms.ComboBox cboParity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboDataSize;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

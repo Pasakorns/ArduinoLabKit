@@ -14,9 +14,11 @@ namespace ArduinoLabKit
     public partial class Form1 : Form
     {
 
+        PanelMenager panelMenager = new PanelMenager();
+
         PanelIndexing LabList;
-        PanelManager panelMenager = new MyPanelMenager();
         private PanelIndexing CommuList;
+
 
         public Form1()
         {

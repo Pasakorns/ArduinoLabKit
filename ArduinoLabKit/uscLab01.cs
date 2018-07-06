@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace ArduinoLabKit
 {
@@ -24,16 +25,19 @@ namespace ArduinoLabKit
                 return _instance;
             }
         }
+        private MyClass01.CommuManager lab01Commu;
 
-        private int _red;
-        private int _grn;
-        private int _blu;
-        private int _pow;
+        private int _red = 255;
+        private int _grn = 255;
+        private int _blu = 255;
+        private int _pow = 0;
+        private Byte[] _cmd = { 255, 255, 255, 0 };
 
         public int Red { get => _red; }
         public int Grn { get => _grn; }
         public int Blu { get => _blu; }
         public int Pow { get => _pow; }
+        public Byte[] Cmd { get => _cmd; }
 
         public uscLab01()
         {
@@ -43,7 +47,6 @@ namespace ArduinoLabKit
         private void uscLab01_Load(object sender, EventArgs e)
         {
             //this.Dock = DockStyle.Fill;
-             
         }
 
         private void pnlColor_Click(object sender, EventArgs e)
@@ -79,6 +82,33 @@ namespace ArduinoLabKit
             txtPower.Text = _pow.ToString();
 
             pnlColor.BackColor = Color.FromArgb(_red, _grn, _blu);
+        }
+
+        private void btnColorUpload_Click(object sender, EventArgs e)
+        { 
+            // Add red
+            _cmd[0] = (Convert.ToByte(_red));
+            // Add green
+            _cmd[1] = (Convert.ToByte(_grn));
+            // Add blue
+            _cmd[2] = (Convert.ToByte(_blu));
+            // Add power
+            _cmd[3] = (Convert.ToByte(_pow));
+
+            try
+            {
+                // Check avilable Communication
+                lab01Commu = uscSerialConfig.serialMenager;
+                lab01Commu.Write(new MyClass01.SerialData<Byte>(_cmd,
+                                                                uscSerialConfig.serialPort.serialPort,
+                                                                4,
+                                                                0));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message,"Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //throw;
+            }
         }
     }
 }
