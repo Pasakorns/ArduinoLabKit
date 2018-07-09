@@ -7,11 +7,6 @@ using System.Windows.Forms;
 
 namespace ArduinoLabKit
 {
-    public abstract class PanelElement
-    {
-        public abstract Control Element();
-    }
-
     public interface IPanel
     {
         void AddControl();
@@ -20,12 +15,6 @@ namespace ArduinoLabKit
     public interface IContainer
     {
         void ClearContainer();
-    }
-
-    public abstract class PanelManager
-    {
-        public abstract void AddSouce(IPanel panel);
-        public abstract void ClearContainer(IContainer container);
     }
 
     // ------------------------------------------------------------------------- //
