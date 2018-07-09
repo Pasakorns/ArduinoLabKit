@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ArduinoLabKit
 {
-    public interface IData
+    public interface IProtocal
     {
         void DataSend ();
     }

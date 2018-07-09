@@ -15,8 +15,8 @@ namespace ArduinoLabKit
     {
         void Connect();
         void Disconnet();
-        void Read(IData data);
-        void Write(IData data);
+        ArrayList Read();
+        void Write(ArrayList cmd);
     }
 
 }

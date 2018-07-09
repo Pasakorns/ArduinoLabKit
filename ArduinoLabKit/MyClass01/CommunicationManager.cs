@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,9 @@ namespace ArduinoLabKit.MyClass01
             _port.Disconnet();
         }
 
-        public void Write(IData data)
+        public void Write(ArrayList list)
         {
-            _port.Write(data);
+            _port.Write(list);
         }
 
         public void Read()

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ArduinoLabKit.MyClass01
 {
-    class SerialData<T> : IData
+    public class SerialData<T> : IProtocal
     {
         private String _dInSting;
         private Char[] _dInChar;
@@ -64,5 +64,15 @@ namespace ArduinoLabKit.MyClass01
                 MessageBox.Show("Serial comunication time out", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    }
+
+    public class TcpData<T>
+    {
+
+    } 
+
+    public class I2cData<T>
+    {
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -15,13 +16,16 @@ namespace ArduinoLabKit.MyClass01
         private int _dataSize;
         private Parity _parity;
         private Handshake _handShake;
+        private SerialPort serialPort;
         public string PortName { get => _portName; }
         public int BaudRate { get => _baudRate; }
         public int DataSize { get => _dataSize; }
         public Handshake Handshake { get => _handShake; }
         public Parity Parity { get => _parity; }
-        public SerialPort serialPort;
+        public SerialPort SerialPort { get => serialPort; set => serialPort = value; }
 
+        private Int32 _offset = 0;
+        private Int32 _len;
 
         public Serial(string portName,
                          int baudRate,
@@ -73,16 +77,35 @@ namespace ArduinoLabKit.MyClass01
                 //throw;
             }
         }
-        public void Read(IData data)
+        public ArrayList Read()
         {
             //throw new NotImplementedException();
             serialPort.ReadLine();
+            //UNDONE: add return for serial read 
+            return null;
         }
-        public void Write(IData data)
+        public void Write(ArrayList cmd)
         {
             //throw new NotImplementedException
-            data.DataSend();
+            int size = cmd.Count;
+            byte[] data = new byte[size];
+            for (int i = 0; i < size; i++)
+            {
+                data[i] = Convert.ToByte(cmd[i]);
+            }
+            _len = data.Length;
+            
+            if (serialPort.IsOpen)
+            {
+                serialPort.Write(data, _offset, _len);
+            }
+            else
+            {
+                MessageBox.Show("Serial comunication time out", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+            
+            
         }
-        
+
     }
 }

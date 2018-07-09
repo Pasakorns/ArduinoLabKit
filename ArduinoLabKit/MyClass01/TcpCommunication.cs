@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -25,12 +26,13 @@ namespace ArduinoLabKit.MyClass01
             //throw new NotImplementedException();
         }
 
-        public void Read(IData data)
+        public ArrayList Read()
         {
             //throw new NotImplementedException();
+            return null;
         }
 
-        public void Write(IData data)
+        public void Write(ArrayList cmd)
         {
             //throw new NotImplementedException();
         }

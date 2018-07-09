@@ -58,7 +58,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MyClass01\CommunicationManager.cs" />
-    <Compile Include="MyClass01\LabData.cs" />
+    <Compile Include="MyClass01\CommuSwitch.cs" />
+    <Compile Include="MyClass01\Protocal.cs" />
     <Compile Include="MyClass01\LabPanel.cs" />
     <Compile Include="MyClass01\SerialCommunication.cs" />
     <Compile Include="MyClass01\TcpCommunication.cs" />

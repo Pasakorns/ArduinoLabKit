@@ -229,7 +229,7 @@
             this.txtPower.Name = "txtPower";
             this.txtPower.Size = new System.Drawing.Size(40, 23);
             this.txtPower.TabIndex = 11;
-            this.txtPower.Text = "0";
+            this.txtPower.Text = "255";
             this.txtPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2

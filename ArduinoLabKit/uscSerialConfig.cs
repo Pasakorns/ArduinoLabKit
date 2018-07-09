@@ -71,7 +71,10 @@ namespace ArduinoLabKit
 
             serialMenager = new MyClass01.CommuManager(serialPort);
             serialMenager.Connect();
-            if (serialPort.serialPort.IsOpen)
+            //TODO: !!! add this every time when add new Communication type !!!
+            Form1.CommuManager = Form1.CommuSwitch.Switch(serialMenager);
+            ///////////////////
+            if (serialPort.SerialPort.IsOpen)
             {
                 lblStatus.Visible = true;
                 btnConnect.Enabled = false;
@@ -81,12 +84,13 @@ namespace ArduinoLabKit
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             serialMenager.Disconnect();
-            if (!serialPort.serialPort.IsOpen)
+            if (!serialPort.SerialPort.IsOpen)
             {
                 lblStatus.Visible = false;
                 btnConnect.Enabled = true;
             }
         }
+
 
     }
 }

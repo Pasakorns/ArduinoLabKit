@@ -19,6 +19,10 @@ namespace ArduinoLabKit
         PanelIndexing LabList;
         private PanelIndexing CommuList;
 
+        public static CommuManager CommuManager { get; set; }
+        public IProtocal Data { get; set; }
+        public static CommuSwitch CommuSwitch = new CommuSwitch();
+
 
         public Form1()
         {
@@ -59,8 +63,7 @@ namespace ArduinoLabKit
 
         private void cboLabSelect_TextChanged(object sender, EventArgs e)
         {
-            //TODO: Edit when change Lab container
-            //HACK: review 
+            //TODO: Edit when change Lab's container/source
             panelMenager.ClearContainer(new TabContainer(tabControl));
             panelMenager.AddSouce(new AddUscToTab(tabControl, LabList.PIndex[cboLabSelect.Text.Trim().ToString()]));
             tabMain.SelectTab(tabControl);
@@ -69,7 +72,6 @@ namespace ArduinoLabKit
         private void cboCommuSelect_TextChanged(object sender, EventArgs e)
         {
             //TODO: Edit when change Communication cofig container
-            //HACK: review 
             panelMenager.ClearContainer(new TabContainer(tabCommu));
             panelMenager.AddSouce(new AddUscToTab(tabCommu, CommuList.PIndex[cboCommuSelect.Text.Trim().ToString()]));
             tabMain.SelectTab(tabCommu);

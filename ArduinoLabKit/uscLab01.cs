@@ -8,11 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Collections;
 
 namespace ArduinoLabKit
 {
     public partial class uscLab01 : UserControl
     {
+
+        private int _red = 255;
+        private int _grn = 255;
+        private int _blu = 255;
+        private int _pow = 255;
+        private ArrayList _cmd;
+        public int Red { get => _red; }
+        public int Grn { get => _grn; }
+        public int Blu { get => _blu; }
+        public int Pow { get => _pow; }
+        public ArrayList Cmd { get => _cmd; }
+
         private static uscLab01 _instance;
         public static uscLab01 Instance
         {
@@ -26,18 +39,7 @@ namespace ArduinoLabKit
             }
         }
         private MyClass01.CommuManager lab01Commu;
-
-        private int _red = 255;
-        private int _grn = 255;
-        private int _blu = 255;
-        private int _pow = 0;
-        private Byte[] _cmd = { 255, 255, 255, 0 };
-
-        public int Red { get => _red; }
-        public int Grn { get => _grn; }
-        public int Blu { get => _blu; }
-        public int Pow { get => _pow; }
-        public Byte[] Cmd { get => _cmd; }
+        private IProtocal _data;
 
         public uscLab01()
         {
@@ -46,9 +48,12 @@ namespace ArduinoLabKit
 
         private void uscLab01_Load(object sender, EventArgs e)
         {
-            //this.Dock = DockStyle.Fill;
+            _cmd = new ArrayList();
+            _cmd.Add(255);
+            _cmd.Add(255);
+            _cmd.Add(255);
+            _cmd.Add(255);
         }
-
         private void pnlColor_Click(object sender, EventArgs e)
         {
             DialogResult result = colorDialog1.ShowDialog();
@@ -68,7 +73,6 @@ namespace ArduinoLabKit
                 txtBlue.Text = _blu.ToString();
             }
         }
-
         private void trbRGB_Scroll(object sender, EventArgs e)
         {
             _red = trbRed.Value;
@@ -83,7 +87,6 @@ namespace ArduinoLabKit
 
             pnlColor.BackColor = Color.FromArgb(_red, _grn, _blu);
         }
-
         private void btnColorUpload_Click(object sender, EventArgs e)
         { 
             // Add red
@@ -97,12 +100,8 @@ namespace ArduinoLabKit
 
             try
             {
-                // Check avilable Communication
-                lab01Commu = uscSerialConfig.serialMenager;
-                lab01Commu.Write(new MyClass01.SerialData<Byte>(_cmd,
-                                                                uscSerialConfig.serialPort.serialPort,
-                                                                4,
-                                                                0));
+                lab01Commu = Form1.CommuManager;
+                lab01Commu.Write(_cmd);
             }
             catch (Exception ex)
             {
