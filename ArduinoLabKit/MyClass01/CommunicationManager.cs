@@ -31,9 +31,10 @@ namespace ArduinoLabKit.MyClass01
             _port.Write(list);
         }
 
-        public void Read()
+        public ArrayList Read()
         {
-            //_port.Read();
+            ArrayList buff = _port.Read();
+            return buff;
         }
     }
 }

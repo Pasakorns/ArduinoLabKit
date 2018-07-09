@@ -80,9 +80,12 @@ namespace ArduinoLabKit.MyClass01
         public ArrayList Read()
         {
             //throw new NotImplementedException();
-            serialPort.ReadLine();
-            //UNDONE: add return for serial read 
-            return null;
+            String str = serialPort.ReadLine();
+            ArrayList buffer = new ArrayList();
+            buffer.AddRange(str.ToArray());
+
+            //UNDONE: add return for serial read
+            return buffer;
         }
         public void Write(ArrayList cmd)
         {

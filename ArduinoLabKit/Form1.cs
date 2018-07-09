@@ -35,7 +35,7 @@ namespace ArduinoLabKit
             //Indexing all Lab control panels
             LabList = new PanelIndexing();
             LabList.AddPanel("Lab 01 : LED control", uscLab01.Instance);
-            LabList.AddPanel("Lab 02 : Analog R/W", uscLab02.Instance);
+            LabList.AddPanel("Lab 02 : Analog Read", uscLab02.Instance);
             LabList.AddPanel("Lab 03 : Step motor control", uscLab03.Instance);
 
             //add selection list in combo box
