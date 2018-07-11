@@ -96,7 +96,7 @@
             this.tabCommu.Location = new System.Drawing.Point(4, 22);
             this.tabCommu.Name = "tabCommu";
             this.tabCommu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCommu.Size = new System.Drawing.Size(303, 341);
+            this.tabCommu.Size = new System.Drawing.Size(303, 333);
             this.tabCommu.TabIndex = 1;
             this.tabCommu.Text = "Communication";
             this.tabCommu.UseVisualStyleBackColor = true;
@@ -252,6 +252,7 @@
             this.btnShowCode.Size = new System.Drawing.Size(25, 25);
             this.btnShowCode.TabIndex = 6;
             this.btnShowCode.UseVisualStyleBackColor = false;
+            this.btnShowCode.Click += new System.EventHandler(this.btnShowCode_Click);
             // 
             // btnShowCircuit
             // 
@@ -264,6 +265,7 @@
             this.btnShowCircuit.Size = new System.Drawing.Size(25, 25);
             this.btnShowCircuit.TabIndex = 5;
             this.btnShowCircuit.UseVisualStyleBackColor = false;
+            this.btnShowCircuit.Click += new System.EventHandler(this.btnShowCircuit_Click);
             // 
             // cutToolStripMenuItem
             // 

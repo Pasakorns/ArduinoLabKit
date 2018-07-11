@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports;
 using System.Collections;
 
 namespace ArduinoLabKit
@@ -20,11 +13,6 @@ namespace ArduinoLabKit
         private int _blu = 255;
         private int _pow = 255;
         private ArrayList _cmd;
-        public int Red { get => _red; }
-        public int Grn { get => _grn; }
-        public int Blu { get => _blu; }
-        public int Pow { get => _pow; }
-        public ArrayList Cmd { get => _cmd; }
 
         private static uscLab01 _instance;
         public static uscLab01 Instance
@@ -39,7 +27,6 @@ namespace ArduinoLabKit
             }
         }
         private MyClass01.CommuManager lab01Commu;
-        private IProtocal _data;
 
         public uscLab01()
         {

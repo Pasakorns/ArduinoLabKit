@@ -36,8 +36,6 @@ namespace ArduinoLabKit
 
         private void uscSerialConfig_Load(object sender, EventArgs e)
         {
-            
-
             foreach (var item in Enum.GetValues(typeof(Parity)))
             {
                 cboParity.Items.Add(item);
@@ -54,8 +52,7 @@ namespace ArduinoLabKit
 
             cboPortName.Items.Clear();
             string[] ports = SerialPort.GetPortNames();
-            cboPortName.Items.AddRange(ports);
-            
+            cboPortName.Items.AddRange(ports);   
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -71,9 +68,11 @@ namespace ArduinoLabKit
 
             serialMenager = new MyClass01.CommuManager(serialPort);
             serialMenager.Connect();
+
             //TODO: !!! add this every time when add new Communication type !!!
             Form1.CommuManager = Form1.CommuSwitch.Switch(serialMenager);
             ///////////////////
+
             if (serialPort.SerialPort.IsOpen)
             {
                 lblStatus.Visible = true;
@@ -90,7 +89,5 @@ namespace ArduinoLabKit
                 btnConnect.Enabled = true;
             }
         }
-
-
     }
 }

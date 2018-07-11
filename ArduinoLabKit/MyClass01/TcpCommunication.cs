@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArduinoLabKit.MyClass01
 {
+    //UNDONE: Tcp class
     public class TcpIp : ICommunication
     {
         private IPAddress _ip;

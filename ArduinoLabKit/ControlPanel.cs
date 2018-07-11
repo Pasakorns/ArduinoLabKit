@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArduinoLabKit
@@ -17,17 +16,47 @@ namespace ArduinoLabKit
         void ClearContainer();
     }
 
-    // ------------------------------------------------------------------------- //
-    public class PanelIndexing
+    public struct LabDetail
     {
-        private Dictionary<string, UserControl> _pIndex = new Dictionary<string, UserControl>();
+        public string labName;
+        public UserControl labPanel;
+        public string codePath;
+        public Image imgPath;
+    }
 
-        public Dictionary<string, UserControl> PIndex { get => _pIndex; set => _pIndex = value; }
+    public struct CommuDetail
+    {
+        public string commuName;
+        public UserControl commuPanel;
+    }
 
-        public void AddPanel(string name, UserControl control)
+    public class LabIndex
+    {
+        public List<LabDetail> Labs = new List<LabDetail>();
+
+        public void AddLab(string labName, UserControl labPanel, string codePath, Image imgPath)
         {
-            _pIndex.Add(name, control);
+            LabDetail lab;
+            lab.labName = labName;
+            lab.labPanel = labPanel;
+            lab.codePath = codePath;
+            lab.imgPath = imgPath;
+
+            Labs.Add(lab);
         }
     }
-    // ------------------------------------------------------------------------- //
+
+    public class CommuIndex
+    {
+        public List<CommuDetail> commuList = new List<CommuDetail>();
+
+        public void AddCommu(string commuName, UserControl commuPanel)
+        {
+            CommuDetail commu;
+            commu.commuName = commuName;
+            commu.commuPanel = commuPanel;
+
+            commuList.Add(commu);
+        }
+    }
 }
