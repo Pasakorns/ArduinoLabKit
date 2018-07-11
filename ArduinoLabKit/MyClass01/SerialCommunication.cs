@@ -13,13 +13,8 @@ namespace ArduinoLabKit.MyClass01
         private int _dataSize;
         private Parity _parity;
         private Handshake _handShake;
-        private SerialPort serialPort;
-        public string PortName { get => _portName; }
-        public int BaudRate { get => _baudRate; }
-        public int DataSize { get => _dataSize; }
-        public Handshake Handshake { get => _handShake; }
-        public Parity Parity { get => _parity; }
-        public SerialPort SerialPort { get => serialPort; set => serialPort = value; }
+        private SerialPort _port;
+        public SerialPort Port { get => _port; set => _port = value; }
 
         private Int32 _offset = 0;
         private Int32 _len;
@@ -42,14 +37,16 @@ namespace ArduinoLabKit.MyClass01
             //throw new NotImplementedException();
             try
             {
-                serialPort = new SerialPort();
-                serialPort.PortName = _portName;
-                serialPort.BaudRate = _baudRate;
-                serialPort.DataBits = _dataSize;
-                serialPort.Handshake = _handShake;
-                serialPort.Parity = _parity;
+                _port = new SerialPort
+                {
+                    PortName = _portName,
+                    BaudRate = _baudRate,
+                    DataBits = _dataSize,
+                    Handshake = _handShake,
+                    Parity = _parity
+                };
 
-                serialPort.Open();
+                _port.Open();
             }
             catch (Exception ex)
             {
@@ -57,14 +54,14 @@ namespace ArduinoLabKit.MyClass01
                 //throw;
             }
         }
-        public void Disconnet()
+        public void Disconnect()
         {
             //throw new NotImplementedException();
             try
             {
-                if (this.serialPort.IsOpen)
+                if (this._port.IsOpen)
                 {
-                    serialPort.Close();
+                    _port.Close();
                     // Clear data
                 }
             }
@@ -77,35 +74,32 @@ namespace ArduinoLabKit.MyClass01
         public ArrayList Read()
         {
             //throw new NotImplementedException();
-            String str = serialPort.ReadLine();
+            String str = _port.ReadLine();
             ArrayList buffer = new ArrayList();
             buffer.AddRange(str.ToArray());
 
             //UNDONE: add return for serial read
             return buffer;
         }
-        public void Write(ArrayList cmd)
+        public void Write(ArrayList message)
         {
             //throw new NotImplementedException
-            int size = cmd.Count;
+            int size = message.Count;
             byte[] data = new byte[size];
             for (int i = 0; i < size; i++)
             {
-                data[i] = Convert.ToByte(cmd[i]);
+                data[i] = Convert.ToByte(message[i]);
             }
             _len = data.Length;
             
-            if (serialPort.IsOpen)
+            if (_port.IsOpen)
             {
-                serialPort.Write(data, _offset, _len);
+                _port.Write(data, _offset, _len);
             }
             else
             {
                 MessageBox.Show("Serial comunication time out", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-            
-            
+            }                        
         }
-
     }
 }

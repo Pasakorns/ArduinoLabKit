@@ -62,7 +62,6 @@
     </Compile>
     <Compile Include="Communications.cs" />
     <Compile Include="ControlPanel.cs" />
-    <Compile Include="Data.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +70,6 @@
     </Compile>
     <Compile Include="MyClass01\CommunicationManager.cs" />
     <Compile Include="MyClass01\CommuSwitch.cs" />
-    <Compile Include="MyClass01\Protocal.cs" />
     <Compile Include="MyClass01\LabPanel.cs" />
     <Compile Include="MyClass01\SerialCommunication.cs" />
     <Compile Include="MyClass01\TcpCommunication.cs" />

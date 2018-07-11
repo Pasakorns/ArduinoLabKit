@@ -18,7 +18,7 @@ namespace ArduinoLabKit.MyClass01
 
         public void Disconnect()
         {
-            _port.Disconnet();
+            _port.Disconnect();
         }
 
         public void Write(ArrayList list)

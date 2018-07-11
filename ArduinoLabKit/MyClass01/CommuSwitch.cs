@@ -5,18 +5,16 @@ using System.Text;
 
 namespace ArduinoLabKit.MyClass01
 {
-    public class CommuSwitch
-    {
-        private CommuManager _selectedCommu;
+    //public static class CommuSwitch
+    //{
 
-        public CommuManager SelectedCommu { get => _selectedCommu; set => _selectedCommu = value; }
+    //    //public ICommunication SelectedCommu { get => _selectedCommu; set => _selectedCommu = value; }
 
-        public CommuManager Switch (CommuManager newCommu)
-        {
-            _selectedCommu = newCommu;
-            return _selectedCommu;
-        }
+    //    public static ICommunication Switch (ICommunication newCommu)
+    //    {
+    //        return newCommu;
+    //    }
 
         
-    }
+    //}
 }

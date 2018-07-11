@@ -25,8 +25,7 @@ namespace ArduinoLabKit
         public static CommuIndex commuIndex;
         public static CommuDetail selectedCommu;
 
-        public static CommuManager CommuManager { get; set; }
-        public static CommuSwitch CommuSwitch = new CommuSwitch();
+        public static ICommunication SelectedCommu { get; set; }
 
         public Form1()
         {
@@ -51,7 +50,7 @@ namespace ArduinoLabKit
             //TODO: Add UserControl to Index when add new communication method
             //Indexing all communication config panels
             commuIndex = new CommuIndex();
-            commuIndex.AddCommu("Serial Com.", uscSerialConfig.Instance);
+            commuIndex.AddCommu("Serial Com.", UscSerialConfig.Instance);
             commuIndex.AddCommu("TCP/IP", uscTcpConfig.Instance);
             //......
             //Show communication list in combo box

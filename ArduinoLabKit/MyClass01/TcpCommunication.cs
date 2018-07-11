@@ -17,7 +17,7 @@ namespace ArduinoLabKit.MyClass01
             //throw new NotImplementedException();
         }
 
-        public void Disconnet()
+        public void Disconnect()
         {
             //throw new NotImplementedException();
         }

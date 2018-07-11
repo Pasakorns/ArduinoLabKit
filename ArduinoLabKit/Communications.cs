@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO.Ports;
+﻿using System.Collections;
 
 namespace ArduinoLabKit
 {
-    //---------------------------------------------
     public interface ICommunication
     {
         void Connect();
-        void Disconnet();
+        void Disconnect();
         ArrayList Read();
         void Write(ArrayList cmd);
     }
-
 }

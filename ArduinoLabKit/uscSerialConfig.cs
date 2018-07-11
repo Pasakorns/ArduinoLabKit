@@ -1,35 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using ArduinoLabKit.MyClass01;
 
 namespace ArduinoLabKit
 {
-    public partial class uscSerialConfig : UserControl
+    public partial class UscSerialConfig : UserControl
     {
-        private static uscSerialConfig _instance;
-        public static uscSerialConfig Instance
+        // Singleton
+        private static UscSerialConfig _instance;
+        public static UscSerialConfig Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new uscSerialConfig();
+                    _instance = new UscSerialConfig();
                 }
                 return _instance;
             }
         }
-        public static MyClass01.CommuManager serialMenager;
-        public static Serial serialPort;
 
-        public uscSerialConfig()
+        public static Serial SerialPort;
+
+        public UscSerialConfig()
         {
             InitializeComponent();
         }
@@ -51,29 +45,23 @@ namespace ArduinoLabKit
             cboParity.SelectedIndex = 0;
 
             cboPortName.Items.Clear();
-            string[] ports = SerialPort.GetPortNames();
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
             cboPortName.Items.AddRange(ports);   
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            string port = cboPortName.Text;
-            int bd = Convert.ToInt32(cboBaudRate.Text);
-            Int32 index = cboHandshake.SelectedIndex;
-            serialPort = new Serial(cboPortName.Text,
+            SerialPort = new Serial(cboPortName.Text,
                                        Convert.ToInt32(cboBaudRate.Text),
                                        Convert.ToInt32(cboDataSize.Text),
                                        (Handshake)cboHandshake.SelectedIndex,
                                        (Parity)cboParity.SelectedIndex);
+            SerialPort.Connect();
 
-            serialMenager = new MyClass01.CommuManager(serialPort);
-            serialMenager.Connect();
+            //Set Serial communication to main communication
+            Form1.SelectedCommu = SerialPort;
 
-            //TODO: !!! add this every time when add new Communication type !!!
-            Form1.CommuManager = Form1.CommuSwitch.Switch(serialMenager);
-            ///////////////////
-
-            if (serialPort.SerialPort.IsOpen)
+            if (SerialPort.Port.IsOpen)
             {
                 lblStatus.Visible = true;
                 btnConnect.Enabled = false;
@@ -82,8 +70,8 @@ namespace ArduinoLabKit
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            serialMenager.Disconnect();
-            if (!serialPort.SerialPort.IsOpen)
+            SerialPort.Disconnect();
+            if (!SerialPort.Port.IsOpen)
             {
                 lblStatus.Visible = false;
                 btnConnect.Enabled = true;

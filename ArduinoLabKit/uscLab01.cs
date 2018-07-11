@@ -26,7 +26,6 @@ namespace ArduinoLabKit
                 return _instance;
             }
         }
-        private MyClass01.CommuManager lab01Commu;
 
         public uscLab01()
         {
@@ -87,8 +86,7 @@ namespace ArduinoLabKit
 
             try
             {
-                lab01Commu = Form1.CommuManager;
-                lab01Commu.Write(_cmd);
+                Form1.SelectedCommu.Write(_cmd);
             }
             catch (Exception ex)
             {

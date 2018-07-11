@@ -1,6 +1,6 @@
 ﻿namespace ArduinoLabKit
 {
-    partial class uscSerialConfig
+    partial class UscSerialConfig
     {
         /// <summary> 
         /// Required designer variable.
