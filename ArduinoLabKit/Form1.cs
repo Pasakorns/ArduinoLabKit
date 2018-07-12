@@ -21,9 +21,9 @@ namespace ArduinoLabKit
 
         public static PanelMenager panelMenager = new PanelMenager();
         public static LabIndex labIndex;
-        public static LabDetail selectedLab;
+        public static LabDetail LabDetails;
         public static CommuIndex commuIndex;
-        public static CommuDetail selectedCommu;
+        public static CommuDetail CommuDetails;
 
         public static ICommunication SelectedCommu { get; set; }
 
@@ -37,9 +37,9 @@ namespace ArduinoLabKit
             //TODO: Add UserControl to Index when add new Arduino lab
             //Indexing all Lab control panels
             labIndex = new LabIndex();
-            labIndex.AddLab("Lab 01 : LED control", uscLab01.Instance, "RGB_Serial_TCP_control.txt", Properties.Resources.lab01_ar);
-            labIndex.AddLab("Lab 02 : Analog Read", uscLab02.Instance, "RGB_Serial_TCP_control.txt", Properties.Resources.lab02_ar);
-            labIndex.AddLab("Lab 03 : Step motor control", uscLab03.Instance, "RGB_Serial_TCP_control.txt", Properties.Resources.lab01_ar);
+            labIndex.AddLab("Lab 01 : LED control", uscLab01.Instance, "code01.ino", Properties.Resources.lab01_ar);
+            labIndex.AddLab("Lab 02 : Analog Read", uscLab02.Instance, "code02.ino", Properties.Resources.lab02_ar);
+            labIndex.AddLab("Lab 03 : Step motor control", uscLab03.Instance, "code02.ino", Properties.Resources.lab01_ar);
             //......
             //Show labs name list in combo box
             foreach (var item in labIndex.Labs)
@@ -66,18 +66,18 @@ namespace ArduinoLabKit
         private void cboLabSelect_TextChanged(object sender, EventArgs e)
         {
             int inx = cboLabSelect.SelectedIndex;
-            selectedLab = labIndex.Labs[inx];
+            LabDetails = labIndex.Labs[inx];
             panelMenager.ClearContainer(new TabContainer(tabControl));
-            panelMenager.AddSouce(new AddUscToTab(tabControl, selectedLab.labPanel));
+            panelMenager.AddSouce(new AddUscToTab(tabControl, LabDetails.labPanel));
             tabMain.SelectTab(tabControl);
         }
 
         private void cboCommuSelect_TextChanged(object sender, EventArgs e)
         {
             int inx = cboCommuSelect.SelectedIndex;
-            selectedCommu = commuIndex.commuList[inx];
+            CommuDetails = commuIndex.commuList[inx];
             panelMenager.ClearContainer(new TabContainer(tabCommu));
-            panelMenager.AddSouce(new AddUscToTab(tabCommu, selectedCommu.commuPanel));
+            panelMenager.AddSouce(new AddUscToTab(tabCommu, CommuDetails.commuPanel));
             tabMain.SelectTab(tabCommu);
         }
 
@@ -88,7 +88,7 @@ namespace ArduinoLabKit
 
         private void btnShowCircuit_Click(object sender, EventArgs e)
         {
-            CircuitViewer.Instance.Show();
+            CircuitViewer.Instance.ShowDialog();
         }
     }
 }

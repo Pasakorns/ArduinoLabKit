@@ -35,7 +35,7 @@ namespace ArduinoLabKit
         private void CodeViewer_Load(object sender, EventArgs e)
         {
 
-            string fileName = Form1.selectedLab.codePath;
+            string fileName = Form1.LabDetails.codePath;
             TextReader tr = new StreamReader(path: @fileName);
             string myText = tr.ReadToEnd();
             txtCodeView.Text = myText;

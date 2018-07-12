@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports;
+using System.Collections;
 
 namespace ArduinoLabKit
 {
     public partial class uscLab02 : UserControl
     {
+
         private static uscLab02 _instance;
         public static uscLab02 Instance
         {
@@ -26,20 +21,57 @@ namespace ArduinoLabKit
             }
         }
 
+        private string _receiveValue = "";
+        private bool _status = false;
+
         public uscLab02()
         {
-            InitializeComponent();
-            
+            InitializeComponent();       
         }
 
         private void uscLab02_Load(object sender, EventArgs e)
         {
-            //this.Dock = DockStyle.Fill;
+           
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRead_Click(object sender, EventArgs e)
         {
+            _status = true;
+            ReadValue();
+        }
 
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            _status = false;
+            lblDisplay.Text = "*_*";
+
+        }
+
+        private async void ReadValue()
+        {
+            try
+            {
+                while (_status)
+                {
+                    ArrayList message = Form1.SelectedCommu.Read();
+                    if (message.Count > 0)
+                    {
+                        _receiveValue = message[message.Count-1].ToString();
+                    }
+                    else
+                    {
+                        _receiveValue = "---";
+                    }
+                    lblDisplay.Text = _receiveValue;
+                    _receiveValue = "";
+                    await Task.Delay(50);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw;
+            }
         }
     }
 }

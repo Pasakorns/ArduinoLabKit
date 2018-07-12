@@ -4,7 +4,7 @@ namespace ArduinoLabKit
 {
     public interface ICommunication
     {
-        void Connect();
+        bool Connect();
         void Disconnect();
         ArrayList Read();
         void Write(ArrayList cmd);

@@ -12,9 +12,10 @@ namespace ArduinoLabKit.MyClass01
         public IPAddress ip { get => _ip; set => _ip = value; }
         public int PortNumber { get => _portNumber; set => _portNumber = value; }
         
-        public void Connect()
+        public bool Connect()
         {
             //throw new NotImplementedException();
+            return false;
         }
 
         public void Disconnect()

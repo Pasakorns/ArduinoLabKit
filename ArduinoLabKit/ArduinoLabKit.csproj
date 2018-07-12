@@ -139,6 +139,9 @@
     <EmbeddedResource Include="uscTcpConfig.resx">
       <DependentUpon>uscTcpConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="code02.ino">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,11 +151,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\lab02_ar.JPG" />
     <None Include="Resources\lab01_ar.JPG" />
-    <Content Include="RGB_Serial_TCP_control.txt">
+    <None Include="Resources\lab02_ar.JPG" />
+    <None Include="code01.ino">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

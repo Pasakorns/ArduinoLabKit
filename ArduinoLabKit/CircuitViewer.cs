@@ -32,7 +32,7 @@ namespace ArduinoLabKit
 
         private void CircuitViewer_Load(object sender, EventArgs e)
         {
-            pnImage.BackgroundImage = Form1.selectedLab.imgPath;
+            pnImage.BackgroundImage = Form1.LabDetails.imgPath;
         }
     }
 }

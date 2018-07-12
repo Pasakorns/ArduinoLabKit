@@ -15,6 +15,7 @@ namespace ArduinoLabKit.MyClass01
         private Handshake _handShake;
         private SerialPort _port;
         public SerialPort Port { get => _port; set => _port = value; }
+        ArrayList _buffer;
 
         private Int32 _offset = 0;
         private Int32 _len;
@@ -30,9 +31,14 @@ namespace ArduinoLabKit.MyClass01
             this._dataSize = dataSize;
             this._handShake = handShack;
             this._parity = parity;
-        }
 
-        public void Connect()
+            _buffer = new ArrayList();
+        }
+        /// <summary>
+        /// Open Serial port
+        /// </summary>
+        /// <returns>true if port connected</returns>
+        public bool Connect()
         {
             //throw new NotImplementedException();
             try
@@ -45,14 +51,15 @@ namespace ArduinoLabKit.MyClass01
                     Handshake = _handShake,
                     Parity = _parity
                 };
-
                 _port.Open();
+                return true;  
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Connection error : " + ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //throw;
+                return false;
             }
+
         }
         public void Disconnect()
         {
@@ -71,16 +78,33 @@ namespace ArduinoLabKit.MyClass01
                 //throw;
             }
         }
+        /// <summary>
+        /// Read all data in buffer. Separate data by "\n"
+        /// </summary>
+        /// <returns>Array of string</returns>
         public ArrayList Read()
         {
             //throw new NotImplementedException();
-            String str = _port.ReadLine();
-            ArrayList buffer = new ArrayList();
-            buffer.AddRange(str.ToArray());
+            string str = "";
 
-            //UNDONE: add return for serial read
-            return buffer;
+            foreach (var item in _port.ReadExisting())
+            {
+                if (item.ToString() != "\n" && item.ToString() != Environment.NewLine)
+                {
+                    str += item;
+                }
+                else
+                {
+                    _buffer.Add(str);
+                    str = "";
+                }
+            }
+            return _buffer;
         }
+        /// <summary>
+        /// Write data to serial with Byte[] type
+        /// </summary>
+        /// <param name="message">data to write</param>
         public void Write(ArrayList message)
         {
             //throw new NotImplementedException
